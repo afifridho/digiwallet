@@ -16,12 +16,12 @@ class FinanceLogs extends Model
 
   public function income()
   {
-      return $this->hasOne('App\Incomes');
+      return $this->belongsTo('App\Incomes', 'incomes_id');
   }
 
   public function expense()
   {
-      return $this->hasOne('App\Expenses');
+      return $this->belongsTo('App\Expenses', 'expenses_id');
   }
 
 }

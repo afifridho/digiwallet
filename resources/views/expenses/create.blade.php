@@ -11,34 +11,35 @@
 
 <div class="row">
   <div class="col-lg-12">
-    <h1 class="page-header">Agency Management</h1>
+    <h1 class="page-header">Expense Management</h1>
   </div>
 </div><!--/.row-->
 
 <div class="row">
   <div class="col-lg-12">
     <div class="panel panel-default">
-      <div class="panel-heading">Create New Agency</div>
+      <div class="panel-heading">Create New Expense</div>
       <div class="panel-body">
         <div class="col-md-6">
-          <form action="{{ route('agencies.store') }}" method="POST" accept-charset="utf-8">
+          <form action="{{ route('expenses.store') }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
             {{ csrf_field() }}
             {{ method_field('POST') }}
             <div class="form-group">
-              <label>Agency Name</label>
-              <input class="form-control" name="name" placeholder="Fill agency name here">
+              <label>Date</label>
+              <input class="datepicker form-control" name="date" placeholder="Fill the date here">
             </div>
             <div class="form-group">
-              <label>Address</label>
-              <textarea class="form-control" name="address" rows="3" placeholder="fill agency address here"></textarea>
+              <label>Expense Name</label>
+              <input class="form-control" name="info" placeholder="Fill expense name here">
             </div>
             <div class="form-group">
-              <label>Agency Categories</label>
-              <select class="form-control" name="category">
-                @foreach ($agencycategories as $key => $agencycategory)
-                <option value="{{ $agencycategory->id }}">{{ $agencycategory->name }}</option>
-                @endforeach
-              </select>
+              <label>Value</label>
+              <input type="number" class="form-control" name="value" placeholder="Fill expense value here">
+            </div>
+            <div class="form-group">
+              <label>Expense Recipt</label>
+              <input type="file" name="file">
+              <p class="help-block">Put the expense recipt file here.</p>
             </div>
             <button type="submit" class="btn btn-primary">Submit Button</button>
             <button type="reset" class="btn btn-default">Reset Button</button>
@@ -47,4 +48,12 @@
       </div>
     </div><!-- /.panel-->
   </div><!-- /.col-->
+@endsection
+@section('additional-js')
+<script type="text/javascript">
+  $('.datepicker').datepicker({
+    format: 'dd-M-yyyy',
+    todayHighlight: true,
+  });
+</script>
 @endsection

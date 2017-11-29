@@ -11,6 +11,6 @@ class Expenses extends Model
 
   public function financelog()
   {
-      return $this->belongsTo('App\FinanceLogs');
+      return $this->hasOne('App\FinanceLogs');
   }
 }

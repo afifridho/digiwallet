@@ -32,13 +32,13 @@
     <em class="fa fa-navicon">&nbsp;</em> Finance<span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"></span>
     </a>
     <ul class="children collapse" id="sub-item-2">
-      <li><a class="" href="{{ url('/agencies') }}">
+      <li><a class="" href="{{ url('/financelogs') }}">
         <span class="fa fa-arrow-right">&nbsp;</span> Financial Records
       </a></li>
-      <li><a class="" href="{{ url('/agencycategories') }}">
+      <li><a class="" href="{{ url('/incomes') }}">
         <span class="fa fa-arrow-right">&nbsp;</span> Income Records
       </a></li>
-      <li><a class="" href="{{ url('/agencycategories') }}">
+      <li><a class="" href="{{ url('/expenses') }}">
         <span class="fa fa-arrow-right">&nbsp;</span> Expense Records
       </a></li>
     </ul>

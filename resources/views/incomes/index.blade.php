@@ -16,7 +16,7 @@
 
 <div class="row">
   <div class="col-lg-12">
-    <h1 class="page-header">Agency Management</h1>
+    <h1 class="page-header">Income Logs</h1>
   </div>
 </div><!--/.row-->
 
@@ -24,32 +24,38 @@
 <div class="row">
   <div class="col-lg-12">
     <div class="panel panel-default">
-      <div class="panel-heading">Agency lists</div>
+      <div class="panel-heading">Log List</div>
       <div class="panel-body">
         <div class="col-md-12">
           <div class="col-md-12">
-            <a href="{{ url('/agencies/create') }}"><button type="button" class="btn btn-lg btn-primary pull-right">Add Agency</button></a>
+            <a href="{{ url('/incomes/create') }}"><button type="button" class="btn btn-lg btn-primary pull-right">Add Income</button></a>
           </div>
           <div class="col-md-12">
             <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
               <thead>
                   <tr>
                       <th>No</th>
-                      <th>Name</th>
-                      <th>Categories</th>
+                      <th>Date</th>
+                      <th>Info</th>
+                      <th>Values</th>
                       <th>Action</th>
                   </tr>
               </thead>
               <tbody>
-                  @if (!is_null($agencies))
-                    @foreach ($agencies as $key => $agency)
+                  @if (!is_null($incomes))
+                    @foreach ($incomes as $key => $income)
                     <tr>
                         <td>{{ $key+1 }}</td>
-                        <td>{{ $agency->name }}</td>
-                        <td>{{ $agency->agencycategory->name }}</td>
+                        <td><a href="{{ url('/incomes/'.$income->id) }}" class="">{{ $income->date }}</a></td>
+                        <td>{{ decrypt($income->info) }}</td>
+                        <td>{{ decrypt($income->value) }}</td>
                         <td>
-                          <a href="{{ route('agencies.edit', $agency->id) }}"><button type="button" class="btn btn-primary">Edit</button></a>
-                          <a href="{{ route('agencies.destroy', $agency->id) }}"><button type="button" class="btn btn-danger">Delete</button></a>
+                          <a href="{{ route('incomes.edit', $income->id) }}"><button type="button" class="btn btn-primary">Edit</button></a>
+                          <form style="display: inline" action="{{ route('incomes.destroy', $income->id) }}" method="POST" accept-charset="utf-8">
+                           {{ csrf_field() }}
+                           {{ method_field('DELETE') }}
+                             <button type="submit" class="btn btn-danger">Delete</button>
+                         </form>
                         </td>
                     </tr>
                     @endforeach
