@@ -25,6 +25,7 @@ class FinanceLogsController extends Controller
   public function index()
   {
     $financelogs = FinanceLogs::with(['income', 'expense'])->orderBy('created_at', 'asc')->paginate('10');
+    // dd(FinanceLogs::orderBy('created_at', 'desc')->first());
     return view('financelogs.index')->with('financelogs', $financelogs);
   }
 

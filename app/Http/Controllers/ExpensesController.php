@@ -76,7 +76,13 @@ class ExpensesController extends Controller
     try {
       $financelogs = new FinanceLogs;
       $financelogs->id = Uuid::generate();
-      $financelogs->balance = encrypt($request->value);
+      if (is_null(FinanceLogs::orderBy('created_at', 'desc')->first())) {
+        $financelogs->balance = encrypt(0-(int)$request->value);
+      }
+      else {
+        $lastBalance = decrypt(FinanceLogs::orderBy('created_at', 'desc')->first()->balance);
+        $financelogs->balance = encrypt((int)$lastBalance-(int)$request->value);
+      }
       $financelogs->expenses_id = $expenses->id;
       $financelogs->save();
     } catch (Exception $e) {
