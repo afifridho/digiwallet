@@ -9,11 +9,6 @@
   <div class="clear"></div>
 </div>
 <div class="divider"></div>
-<form role="search">
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="Search">
-  </div>
-</form>
 <ul class="nav menu">
   <li><a href="#"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
   <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
@@ -43,5 +38,15 @@
       </a></li>
     </ul>
   </li>
-  <li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+  <li>
+    <a href="{{ route('logout') }}"
+        onclick="event.preventDefault();
+                 document.getElementById('logout-form').submit();"><em class="fa fa-power-off">&nbsp;</em>
+        Logout
+    </a>
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        {{ csrf_field() }}
+    </form>
+  </li>
 </ul>
