@@ -28,7 +28,7 @@
     </a>
     <ul class="children collapse" id="sub-item-2">
       <li><a class="" href="{{ url('/financelogs') }}">
-        <span class="fa fa-arrow-right">&nbsp;</span> Financial Records
+        <span class="fa fa-arrow-right">&nbsp;</span> Financial Logs
       </a></li>
       <li><a class="" href="{{ url('/incomes') }}">
         <span class="fa fa-arrow-right">&nbsp;</span> Income Records

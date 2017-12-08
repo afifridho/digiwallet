@@ -16,7 +16,7 @@
 
 <div class="row">
   <div class="col-lg-12">
-    <h1 class="page-header">Finance Logs</h1>
+    <h1 class="page-header">Financial Logs</h1>
   </div>
 </div><!--/.row-->
 
@@ -27,9 +27,7 @@
       <div class="panel-heading">Log List</div>
       <div class="panel-body">
         <div class="col-md-12">
-          <div class="col-md-12">
-            <a href="{{ url('/financelogs/create') }}"><button type="button" class="btn btn-lg btn-primary pull-right">Add Finance Log</button></a>
-          </div>
+
           <div class="col-md-12">
             <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
               <thead>
@@ -37,6 +35,8 @@
                       <th>No</th>
                       <th>Date</th>
                       <th>Info</th>
+                      <th>Income/Expense</th>
+                      <th>Income/Expense Value</th>
                       <th>Balance</th>
                   </tr>
               </thead>
@@ -48,9 +48,13 @@
                         @if(!is_null($financelog->income))
                         <td>{{ $financelog->income->date }}</td>
                         <td><a href="{{ url('/incomes/'.$financelog->incomes_id) }}" class="">{{ decrypt($financelog->income->info) }}</a></td>
+                        <td>Income</td>
+                        <td>+ {{ decrypt($financelog->income->value) }}</td>
                         @else
                         <td>{{ $financelog->expense->date }}</td>
                         <td><a href="{{ url('/expenses/'.$financelog->expenses_id) }}" class="">{{ decrypt($financelog->expense->info) }}</a></td>
+                        <td>Expense</td>
+                        <td>- {{ decrypt($financelog->expense->value) }}</td>
                         @endif
                         <td>{{ decrypt($financelog->balance) }}</td>
                     </tr>
